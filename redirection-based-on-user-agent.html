@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Redirection based on user agent - Cloudflare</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1><a href="./">Cloudflare</a></h1>
+    <p class="p1">6. Redirection based on user agent</p>
+    <p class="p2">I want to redirect visitor with specific user agent (*MSIE 8.0* for example) to a different page. It seems this is not possible with Cloudflare Page Rules. Is there any other way to achieve that using Cloudflare?</p>
+        <hr>
+    <p class="p3">Dear User,</p>
+    <p class="p3">Thank you for reaching out about your questions related to redirection based on User-Agent. I'd like to help you with.</p>
+    <p class="p3">To redirect visitors with a specific user agent using Cloudflare, you're correct that Page Rules alone won't be sufficient. However, you can achieve this using Cloudflare Workers. Here's how you can implement this:</p>
+    <p class="p3">1. Create a Cloudflare Worker: Log into your Cloudflare dashboard, go to the "Workers" section, and create a new Worker.</p>
+    <p class="p3">2. Use the following script as a starting point:</p>
+    <span class="pcode">
+        addEventListener('fetch', event => {<br>
+            event.respondWith(handleRequest(event.request));<br>
+          });<br>
+          <br>
+          async function handleRequest(request) {<br>
+            const userAgent = request.headers.get('User-Agent') || '';<br>
+            <br>
+            // Check if the User-Agent contains "*MSIE 8.0*"<br>
+            if (userAgent.includes('*MSIE 8.0*')) {<br>
+              return Response.redirect('https://example.com/legacy-browser', 302);<br>
+            }<br>
+            <br>
+            // Continue to the original request if the User-Agent does not match<br>
+            return fetch(request);<br>
+          }
+    </span>
+    <p class="p3">3. Deploy the Worker: Save and deploy the Worker to your website</p>
+    <p class="p3">4. Set up a route: In the Cloudflare dashboard, go to the "Workers" section and add a route for your website (e.g., *.example.com/*) and assign it to the Worker you just created.</p>
+    <p class="p3"><a href="https://developers.cloudflare.com/workers/examples/conditional-response/"
+        target="_blank">https://developers.cloudflare.com/workers/examples/conditional-response/</a></p>
+        <p class="p3">Please feel free to contact me if you need any further information.</p>
+    <p class="p3">Best regards,<br>
+        Szymon Kamiński<br>
+        Cloudflare Support</p>
+</body>
+
+</html>

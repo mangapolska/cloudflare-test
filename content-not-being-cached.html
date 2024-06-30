@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Content not Being Cached - Cloudflare</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1><a href="./">Cloudflare</a></h1>
+    <p class="p1">5. Content not Being Cached</p>
+    <p class="p2">After activating Cloudflare on my site, I am seeing that resources on my pages are not being cached:
+    </p>
+    <span class="pcode">
+        <b>curl -svo /dev/null roskolniv.us</b><br>
+        * Rebuilt URL to: roskolniv.us/<br>
+        * Trying 104.16.27.128...<br>
+        * Connected to roskolniv.us (127.0.0.1) port 80 (#0)<br>
+        > GET / HTTP/1.1<br>
+        > User-Agent: curl/7.40.0<br>
+        > Host: roskolniv.us<br>
+        > Accept: */*<br>
+        ><br>
+        < HTTP/1.1 200 OK<br>
+            < Date: Mon, 22 Jun 2015 03:03:59 GMT<br>
+                < Content-Type: text/html; charset=utf-8<br>
+                    < Transfer-Encoding: chunked<br>
+                        < Connection: keep-alive<br>
+                            < Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0,
+                                max-age=0<br>
+                                < Strict-Transport-Security: max-age=10<br>
+                                    < X-Powered-By: Express<br>
+                                        < Server: cloudflare-nginx<br>
+                                            < CF-RAY: 1fa4b922fef517a4-SIN<br>
+                                                <<br>
+                                                    { [3507 bytes data]<br>
+                                                    * Connection #0 to host roskolniv.us left intact
+    </span>
+    <p class="p2">Why is Cloudflare’s caching not working on my site?</p>
+        <hr>
+    <p class="p3">Dear User,</p>
+    <p class="p3">Thank you for reaching out about your questions related to issue with caching.</p>
+    <p class="p3">Based on the curl output you've provided, it appears that Cloudflare's caching is not working on your site due to the Cache-Control header being set to prevent caching:</p>
+    <span class="pcode">
+        Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+    </span>
+    <p class="p3">This header is instructing browsers and intermediary caches (including Cloudflare) not to cache the content. Cloudflare respects the origin's cache headers by default. When it sees these no-cache directives, it won't cache the content.</p>
+    <p class="p3">To fix this issue and enable Cloudflare caching, you need to:</p>
+    <p class="p3">1. Modify your origin server (Express app) to set appropriate caching headers for content you want to be cached.<br>2. Configure Cloudflare to override or ignore the origin's cache headers if needed: <a href="https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/"
+        target="_blank">https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/</a></p>
+    <p class="p3">If you have followed these changes and the issue persists, please provide any logs or response headers with URL examples and I will be happy to assist you further.</p>
+    <p class="p3">Best regards,<br>
+        Szymon Kamiński<br>
+        Cloudflare Support</p>
+</body>
+
+</html>

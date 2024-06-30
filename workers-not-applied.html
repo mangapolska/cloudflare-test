@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Workers not applied - Cloudflare</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1><a href="./">Cloudflare</a></h1>
+    <p class="p1">3. Workers not applied</p>
+    <p class="p2">I've just added a Worker on the Cloudflare Dashboard for my website: it works in the debugger but
+        doesn't work when I query the site. Why is that? Is there anything to activate or anything I could check?<p>
+    <hr>
+    <p class="p3">Dear User,</p>
+    <p class="p3">Thank you for reaching out about your issues wit Workers service. I'd like to help you with.</p>
+    <p class="p3">Based on your description, the Worker works in the debugger but not when querying the site. Here are a few steps to check and resolve common issues:</p>
+    <p class="p3"><b>1. Ensure the Worker is Deployed.</b><br>Make sure that you have deployed the Worker and not just saved it in the Cloudflare dashboard. To deploy the Worker, navigate to the Workers tab, select your Worker, and click "Deploy".</p>
+    <p class="p3"><b>2. Route Configuration.</b><br>Verify that the route for your Worker is correctly configured. Go to the Workers tab and check if the URL pattern (route) matches your website's URL. For example, if your website is https://example.com/*, ensure that this route is added to the Worker.</p>
+    <p class="p3"><b>3. DNS Settings.</b><br>Ensure that your DNS settings are properly configured in Cloudflare. The DNS entry for your domain should be proxied (orange cloud icon) to ensure that traffic goes through Cloudflare’s network where the Worker can be applied.</p>
+    <p class="p3"><b>4. Caching Issues.</b><br>There might be a caching issue. Try clearing the cache or disable cache temporarily to see if that resolves the issue. You can use the “Purge Cache” feature in the Cloudflare dashboard under the Caching tab.</p>
+    <p class="p3"><b>5. Worker Script Errors.</b><br>Although the script works in the debugger, there might be runtime errors when deployed. Check the Worker logs for any errors. You can do this in the Cloudflare dashboard under the Workers tab by clicking on the "Logs" button.</p>
+    <p class="p3"><b>6. Permissions and Settings.</b><br>Ensure that the Worker has the necessary permissions and settings enabled. Sometimes specific settings in the Worker script may need to be adjusted depending on the traffic and request types.</p>
+    <p class="p3"><a href="https://developers.cloudflare.com/workers/"
+        target="_blank">https://developers.cloudflare.com/workers/</a></p>
+    <p class="p3">If you have followed these steps and the issue persists, please provide any error messages or logs, and I will be happy to assist you further.</p>
+    <p class="p3">Best regards,<br>
+        Szymon Kamiński<br>
+        Cloudflare Support</p>
+</body>
+
+</html>

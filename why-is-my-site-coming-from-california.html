@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Why is my site coming from California?! - Cloudflare</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1><a href="./">Cloudflare</a></h1>
+    <p class="p1">2. Why is my site coming from California?!</p>
+    <p class="p2">I’m in London, but looking at your IPs it shows that you are serving my website from California. Can
+        that be right? Why is that? I thought you were supposed to serve my website from some places close to me?</p>
+    <hr>
+    <p class="p3">Dear User,</p>
+    <p class="p3">Thank you for reaching out about your concerns. I'd like to help you understand this.</p>
+    <p class="p3">If you will check IP Organization Ownership, indeed you will see Cloudflare with California location
+        (example):</p>
+    <span class="pcode">
+        OrgName: Cloudflare, Inc.<br>
+        OrgId: CLOUD14<br>
+        Address: 101 Townsend Street<br>
+        City: San Francisco<br>
+        StateProv: CA<br>
+        PostalCode: 94107<br>
+        Country: US<br>
+        RegDate: 2010-07-09<br>
+        Updated: 2021-07-01<br>
+    </span>
+    <p class="p3">However trully serving is related to client (PC, mobile device, etc.) location and you could
+        check Cloudflare POP server in response headers:</p>
+    <span class="pcode">
+        <b>~ curl -I "https://example.com"</b><br>
+        HTTP/2 301<br>
+        [...]<br>
+        server: cloudflare<br>
+        <span class="highlight">cf-ray: 89bef1289c492c23-FRA</span><br>
+        alt-svc: h3=":443"; ma=86400
+    </span>
+    <p class="p3">Reference: <a href="https://developers.cloudflare.com/fundamentals/reference/http-request-headers/"
+            target="_blank">https://developers.cloudflare.com/fundamentals/reference/http-request-headers/</a><br>
+        Section: #CF-RAY
+    <p class="p3">The CF-ray header (otherwise known as a Ray ID) is a hashed value that encodes information about the
+        data center and the visitor’s request.</p>
+    <p class="p3">Some of locations are avaialble to check on: <a href="https://speed.cloudflare.com/locations"
+            target="_blank">https://speed.cloudflare.com/locations</a></p>
+    <p class="pcode">
+        <span class="highlight">"iata": "FRA",</span><br>
+        "lat": 50.0264015198,<br>
+        "lon": 8.543129921,<br>
+        "cca2": "DE",<br>
+        "region": "Europe",<br>
+        "city": "Frankfurt"
+    </p>
+    <p class="p3">Please feel free to contact me if you need any further information.</p>
+    <p class="p3">Best regards,<br>
+        Szymon Kamiński<br>
+        Cloudflare Support</p>
+</body>
+
+</html>

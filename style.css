@@ -1,0 +1,41 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #000;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+.p1 {
+    font-weight: 600;
+}
+
+.p2 {
+    font-style: italic;
+}
+
+.p3 {
+}
+
+.pcode {
+    font-family: 'Source Code Pro', monospace;
+    font-style: italic;
+}
+
+.highlight {
+    background-color: #f1c40f;
+}
+
+hr {
+    height: 1px;
+    background-color: #eeeeee;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}

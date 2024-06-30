@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1><a href="./">Cloudflare</a></h1>
+    <p class="p1"><a href="./site-down-your-name-servers-are-down.html">1. Site down, your name servers are down</a></p>
+    <p class="p2">I am having trouble reaching my website http://apifu.com/ from different networks. Are your
+        nameservers working properly?</p>
+    <hr>
+    <p class="p1"><a href="./why-is-my-site-coming-from-california.html">2. Why is my site coming from California?!</a>
+    </p>
+    <p class="p2">I’m in London, but looking at your IPs it shows that you are serving my website from California. Can
+        that be right? Why is that? I thought you were supposed to serve my website from some places close to me?</p>
+    <hr>
+    <p class="p1"><a href="./workers-not-applied.html">3. Workers not applied</a></p>
+    <p class="p2">I've just added a Worker on the Cloudflare Dashboard for my website: it works in the debugger but
+        doesn't work when I query the site. Why is that? Is there anything to activate or anything I could check?</p>
+    <hr>
+    <p class="p1"><a href="./cloudflare-nameservers.html">4. Cloudflare Nameservers</a></p>
+    <p class="p2">How are Cloudflare's nameservers different from the DNS provided by Google DNS or OpenDNS? Can I
+        delegate to Cloudflare nameservers while still using my host’s DNS?</p>
+    <hr>
+    <p class="p1"><a href="./content-not-being-cached.html">5. Content not Being Cached</a></p>
+    <p class="p2">After activating Cloudflare on my site, I am seeing that resources on my pages are not being cached:
+    </p>
+    <span class="pcode">
+        <b>curl -svo /dev/null roskolniv.us</b><br>
+        * Rebuilt URL to: roskolniv.us/<br>
+        * Trying 104.16.27.128...<br>
+        * Connected to roskolniv.us (127.0.0.1) port 80 (#0)<br>
+        > GET / HTTP/1.1<br>
+        > User-Agent: curl/7.40.0<br>
+        > Host: roskolniv.us<br>
+        > Accept: */*<br>
+        ><br>
+        < HTTP/1.1 200 OK<br>
+            < Date: Mon, 22 Jun 2015 03:03:59 GMT<br>
+                < Content-Type: text/html; charset=utf-8<br>
+                    < Transfer-Encoding: chunked<br>
+                        < Connection: keep-alive<br>
+                            < Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0,
+                                max-age=0<br>
+                                < Strict-Transport-Security: max-age=10<br>
+                                    < X-Powered-By: Express<br>
+                                        < Server: cloudflare-nginx<br>
+                                            < CF-RAY: 1fa4b922fef517a4-SIN<br>
+                                                <<br>
+                                                    { [3507 bytes data]<br>
+                                                    * Connection #0 to host roskolniv.us left intact
+    </span>
+    <p class="p2">Why is Cloudflare’s caching not working on my site?</p>
+    <hr>
+    <p class="p1"><a href="./redirection-based-on-user-agent.html">6. Redirection based on user agent</a></p>
+    <p class="p2">I want to redirect visitor with specific user agent (*MSIE 8.0* for example) to a different page. It
+        seems this is not possible with Cloudflare Page Rules. Is there any other way to achieve that using Cloudflare?
+    </p>
+</body>
+
+</html>

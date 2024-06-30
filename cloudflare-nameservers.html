@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Cloudflare Nameservers - Cloudflare</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1><a href="./">Cloudflare</a></h1>
+    <p class="p1">4. Cloudflare Nameservers</p>
+    <p class="p2">How are Cloudflare's nameservers different from the DNS provided by Google DNS or OpenDNS? Can I
+        delegate to Cloudflare nameservers while still using my host’s DNS?
+    <p>
+        <hr>
+    <p class="p3">Dear User,</p>
+    <p class="p3">Thank you for reaching out about your questions related to Cloudflare DNS nameservers.</p>
+    <p class="p3">Cloudflare's nameservers differ from public DNS providers like Google DNS or OpenDNS in several key
+        ways:</p>
+    <p class="p3"><b>1. Authoritative vs. Recursive.</b><br>Cloudflare nameservers are authoritative for domains using
+        their services. This means they hold the actual DNS records for those domains. Google DNS and OpenDNS are
+        recursive DNS resolvers. They look up DNS information from authoritative servers but don't host the records
+        themselves.</p>
+    <p class="p3"><b>2. DNS Management.</b><br>With Cloudflare, you can manage your DNS records directly through their
+        interface. Google DNS and OpenDNS don't provide DNS management - they only resolve DNS queries.</p>
+    <p class="p3"><b>3. Additional Services.</b><br>Cloudflare integrates DNS with their CDN, DDoS protection, and other
+        web performance/security services. Google DNS and OpenDNS focus primarily on DNS resolution, though OpenDNS
+        offers some security features.</p>
+    <p class="p3"><b>4. Proxying.</b><br>Cloudflare can act as a reverse proxy for your traffic, hiding your origin
+        server's IP. Google DNS and OpenDNS don't offer this services.</p>
+    <p class="p3">Regarding your second question: Yes, you can delegate to Cloudflare nameservers while still using your
+        host's DNS, with following considerations:</p>
+    <p class="p3"><b>1. Partial DNS Delegation.</b><br>You can use Cloudflare for specific subdomains or records while
+        keeping others on your host's DNS. This clould be done through CNAME or NS records.</p>
+    <p class="p3"><b>2. Propagation Time.</b><br>Changes may take time to propagate when switching between or using
+        multiple DNS providers.</p>
+    <p class="p3">If you're considering this setup, it's important to plan carefully to avoid disruptions.</p>
+    <p class="p3"><a href="https://www.cloudflare.com/cloudflare-vs-google-dns/"
+        target="_blank">https://www.cloudflare.com/cloudflare-vs-google-dns/</a></p>
+    <p class="p3">If you have followed these steps and the issue persists, please provide any error messages or logs,
+        and I will be happy to assist you further.</p>
+    <p class="p3">Best regards,<br>
+        Szymon Kamiński<br>
+        Cloudflare Support</p>
+</body>
+
+</html>
